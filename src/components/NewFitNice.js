@@ -56,7 +56,7 @@ export default function NewFitNice() {
 		}
 	}
 	return (
-		<div>
+		<>
 			<FormsContainer>
 				<Label>Category:</Label>
 				<select name='category_id' value={formState.category_id} onChange={handleChange}>
@@ -66,6 +66,6 @@ export default function NewFitNice() {
 				<BigTextInput type='text' name='body' value={formState.body} onChange={handleChange}></BigTextInput>
 				<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
 			</FormsContainer>
-		</div>
+		</>
 	)
 }

@@ -38,7 +38,6 @@ export default function NewUser() {
 			<Input type="text" name='username' value={formState.username} onChange={handleChange}></Input>
 			<Label>Email:</Label>
 			<Input type='email' name='email' value={formState.email} onChange={handleChange}></Input>
-
 			<Label>Password:</Label>
 			<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
 			<Label>Password Confirmation:</Label>

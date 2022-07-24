@@ -11,13 +11,14 @@ import Nav from './components/Nav'
 import SignIn from './components/SignIn'
 import NewFitNice from './components/NewFitNice'
 import NewUser from './components/NewUser'
-import {Header, FitNice} from './components/Styled/Styled'
+import {Header, FitNice, Container} from './components/Styled/Styled'
 import { createGlobalStyle } from 'styled-components'
 
-//global background colour for every page
+//global styling for whole page
 
 const GlobalStyle = createGlobalStyle`
   body {
+	font-family: Arial,sans-serif;
     background: #D3D3D3;
   }
 `
@@ -43,11 +44,10 @@ const App = () => {
 	return (
 		<div>
 			<GlobalStyle />
-			
 			<StateContext.Provider value={{store,dispatch}}>
-			<FitNice>
-			<Header> FitNices Library </Header>
-				<Router>
+				<FitNice>
+				<Header> FitNices Library </Header>
+					<Router>
 					<Nav/>
 						<Switch>
 							<Route exact path='/fitnices' component={FitNices}/> 

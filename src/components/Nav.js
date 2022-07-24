@@ -4,7 +4,7 @@ import {Button, Container, Span} from './Styled/Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {signOut} from '../services/authServices'
 // import { ThemeProvider } from 'styled-components'
-import { theme } from './Styled/Styled'
+
 
 // export nav from nav file and inserting this into App.js
 // nav is displayed as <Nav />
@@ -41,6 +41,7 @@ export default function Nav() {
 			<Button onClick={() => history.push('/fitnices')}>Home</Button>
 			{loggedInUser ?
 				<>
+				
 				<Button onClick={handleSignOut}>Sign Out</Button>	
 				<Button onClick={() => history.push('/fitnices/new') }>Add FitNice</Button>	
 				<Span>{loggedInUser.toUpperCase()}</Span>

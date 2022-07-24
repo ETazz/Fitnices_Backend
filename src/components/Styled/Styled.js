@@ -6,10 +6,13 @@ export const FitNice = styled.div `
 	background-color: #5d5d5d;
 `
 
-export const Header = styled.h1 `
-	font-family: Arial,sans-serif;
-	color: white;
-
+export const Header = styled.div `
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	color: #fff;
+	background-color: grey;
 `
 // Container is around the navbar, change this to change navbar
 
@@ -25,27 +28,30 @@ export const FormsContainer = styled.div `
 export const Container = styled.div `
 	display: flex;
 	align-items: center;
-	justify-content: flex;
+	justify-content: center;
 	margin-bottom: 10px;
-`
-// style for navbar items
-
-export const Span = styled.span`
-	padding: .5em;
-	margin: 1em;
-	font-family: Arial, sans-serif;
-	
+	background-color: black;
 `
 // Styling for buttons 
+export const Span = styled.span`
+	background-color: #fff;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 10px( 0, 0, 0, 0.15);
+	font-size: 12px;
+	font-weight: 700;
+	padding: 10px 10px;
+`
 
-export const Button = styled(Span) `
+export const Button = styled.button`
+	margin: 10px;
 	border-radius: 50px;
 	border: none;
 	box-shadow: 0 0 10px rgba( 0, 0, 0, 0.15);
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: 700;
-	padding: 15px 60px;
+	padding: 10px 30px;
 	background-color: ${({bg}) => bg || 'fff'};
 	color: ${({color}) =>  color || '#333'};
 
@@ -70,13 +76,12 @@ export const BigTextInput = styled(Input) `
 
 export const Label = styled.span `
 font-family: Arial,sans-serif;
-color: #000000;
+color: #fff;
 `
 // fitnices body
 export const FitNiceBody = styled.div `
 background-color: white;
 font-size: 1.5em;
-font-family: Arial,sans-serif;
 padding: .5em;
 `
 
