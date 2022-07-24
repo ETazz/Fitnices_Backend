@@ -11,8 +11,16 @@ import Nav from './components/Nav'
 import SignIn from './components/SignIn'
 import NewFitNice from './components/NewFitNice'
 import NewUser from './components/NewUser'
-import {Header} from './components/Styled'
+import {Header, FitNice} from './components/Styled/Styled'
+import { createGlobalStyle } from 'styled-components'
 
+//global background colour for every page
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #D3D3D3;
+  }
+`
 
 
 const App = () => {
@@ -34,20 +42,25 @@ const App = () => {
 
 	return (
 		<div>
+			<GlobalStyle />
+			
 			<StateContext.Provider value={{store,dispatch}}>
-				<Header> FitNices Library </Header>
+			<FitNice>
+			<Header> FitNices Library </Header>
 				<Router>
 					<Nav/>
-					<Switch>
-						<Route exact path='/fitnices' component={FitNices}/> 
-						<Route exact path='/fitnices/new' component={NewFitNice} />
-						<Route exact path='/fitnices/update/:id' component={NewFitNice} />
-						<Route path='/fitnices/:id' component={FitNiceDetails}/>  
-						<Route path='/sign_in' component={SignIn}></Route>
-						<Route path='/register' component={NewUser}></Route>
-					</Switch>
+						<Switch>
+							<Route exact path='/fitnices' component={FitNices}/> 
+							<Route exact path='/fitnices/new' component={NewFitNice} />
+							<Route exact path='/fitnices/update/:id' component={NewFitNice} />
+							<Route path='/fitnices/:id' component={FitNiceDetails}/>  
+							<Route path='/sign_in' component={SignIn}></Route>
+							<Route path='/register' component={NewUser}></Route>
+						</Switch>
 				</Router>
+				</FitNice>
 			</StateContext.Provider>
+
 		</div>
 	);
 }

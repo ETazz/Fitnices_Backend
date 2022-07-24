@@ -2,7 +2,7 @@ import React,{  useState,useEffect} from 'react'
 import {useParams,useHistory} from 'react-router-dom'
 import Moment from 'react-moment'
 import {getFitNice} from '../services/fitniceServices'
-import {Button, Panel} from './Styled'
+import {Button, Container} from './Styled/Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteFitNice} from '../services/fitniceServices'
 
@@ -35,10 +35,10 @@ export default function FitNiceDetails() {
 			<p>Category: {fitnice.category}</p>
 			<p>{fitnice.body}</p>
 			{loggedInUser === fitnice.author &&
-				<Panel>
+				<Container>
 					<Button onClick={() => history.push(`/fitnices/update/${id}`)}>Update</Button>
 					<Button onClick={handleDelete}>Delete</Button>
-				</Panel>
+				</Container>
 			}
 		</div>
 	)

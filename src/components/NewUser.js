@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {Panel,Label, Input, Button} from './Styled'
+import {FormsContainer,Label, Input, Button} from './Styled/Styled'
 import {signUp} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 
@@ -33,19 +33,18 @@ export default function NewUser() {
 	}
 	return (
 		<>
-		<Panel>
+		<FormsContainer>
 			<Label>Username:</Label>
 			<Input type="text" name='username' value={formState.username} onChange={handleChange}></Input>
 			<Label>Email:</Label>
 			<Input type='email' name='email' value={formState.email} onChange={handleChange}></Input>
-		</Panel>
-		<Panel>
+
 			<Label>Password:</Label>
 			<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
 			<Label>Password Confirmation:</Label>
 			<Input type='password' name='password_confirmation' value={formState.password_confirmation} onChange={handleChange}></Input>
 			<Button onClick={handleRegister}>Register</Button>
-		</Panel>
+		</FormsContainer>
 		</>
 	)
 }

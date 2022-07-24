@@ -1,8 +1,13 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-import {Button, Panel, Span} from './Styled'
+import {Button, Container, Span} from './Styled/Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {signOut} from '../services/authServices'
+// import { ThemeProvider } from 'styled-components'
+import { theme } from './Styled/Styled'
+
+// export nav from nav file and inserting this into App.js
+// nav is displayed as <Nav />
 
 export default function Nav() {
 	let history = useHistory()
@@ -30,13 +35,15 @@ export default function Nav() {
 	}
 
 	return (
-		<Panel>
+		// <ThemeProvider theme = {theme}>
+		
+			<Container>
 			<Button onClick={() => history.push('/fitnices')}>Home</Button>
 			{loggedInUser ?
 				<>
 				<Button onClick={handleSignOut}>Sign Out</Button>	
 				<Button onClick={() => history.push('/fitnices/new') }>Add FitNice</Button>	
-				<Span>{loggedInUser}</Span>
+				<Span>{loggedInUser.toUpperCase()}</Span>
 				</>
 			:
 				<>
@@ -44,7 +51,8 @@ export default function Nav() {
 				<Button onClick={() => history.push('/sign_in')}>Sign In</Button>
 				</>
 			}
-		</Panel>
+			</Container>
+		// </ThemeProvider>
 	)
 
 		}

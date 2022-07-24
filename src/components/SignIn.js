@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
-import {Button, Label, Input} from './Styled'
+import {Button, Label, Input} from './Styled/Styled'
 import {signIn} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
+import {Container} from './Styled/Styled'
 
 export default function SignIn({history}) {
 	const initialFormState = {
@@ -33,11 +34,13 @@ export default function SignIn({history}) {
 	}
 	return (
 		<form >
-			<Label>Email:</Label>
-			<Input type='email' name='email' value={formState.username} onChange={handleChange}></Input>
-			<Label>Password:</Label>
-			<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
-			<Button onClick={handleSubmit}>Login</Button>
+			<Container>
+				<Label>Email:</Label>
+				<Input type='email' name='email' value={formState.username} onChange={handleChange}></Input>
+				<Label>Password:</Label>
+				<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
+				<Button onClick={handleSubmit}>Login</Button>
+			</Container>
 		</form>
 	)
 }

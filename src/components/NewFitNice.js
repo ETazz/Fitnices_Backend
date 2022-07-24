@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Label, BigTextInput, Button, FormsContainer} from './Styled/Styled'
 import {createFitNice, getFitNice, updateFitNice} from '../services/fitniceServices'
-// import {categories} from '../utils/categories'
 import {useGlobalState} from '../utils/stateContext'
 
 export default function NewFitNice() {
@@ -14,7 +13,7 @@ export default function NewFitNice() {
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch, store} = useGlobalState()
-	const {fitnices, categories} = store;
+	const {categories} = store;
 
 	useEffect(() => {
 		if(id) {
@@ -28,7 +27,7 @@ export default function NewFitNice() {
 				})
 			})
 		}
-	},[id]);
+	},[id, categories]);
 
 	function handleChange(event) {
 		setFormState({
@@ -58,13 +57,15 @@ export default function NewFitNice() {
 	}
 	return (
 		<div>
-			<Label>Category:</Label>
-			<select name='category_id' value={formState.category_id} onChange={handleChange}>
-				{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
-			</select>
-			<Label>FitNice:</Label>
-			<BigTextInput type='text' name='body' value={formState.body} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+			<FormsContainer>
+				<Label>Category:</Label>
+				<select name='category_id' value={formState.category_id} onChange={handleChange}>
+					{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
+				</select>
+				<Label>FitNice:</Label>
+				<BigTextInput type='text' name='body' value={formState.body} onChange={handleChange}></BigTextInput>
+				<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+			</FormsContainer>
 		</div>
 	)
 }
