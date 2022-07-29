@@ -1,33 +1,37 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button, FormsContainer} from './Styled/Styled'
-import {createFitNice, getFitNice, updateFitNice} from '../services/fitniceServices'
+import {createFitNice, updateFitNice} from '../services/fitniceServices'
+import { getFitNice } from "../services/fitniceServices"
 import {useGlobalState} from '../utils/stateContext'
 
 export default function NewFitNice() {
 	const initialFormState = {
 		category_id: 1,
+		targetmusclecategory_id: 1,
 		body: ''
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch, store} = useGlobalState()
-	const {categories} = store;
+	const {categories, targetmusclecategories} = store;
 
 	useEffect(() => {
 		if(id) {
 			getFitNice(id)
 			.then((fitnice) => {
 				console.log(fitnice)
-				const category = categories.find((category) => category.name.toLowerCase() === fitnice.category.toLowerCase())
+				const category = categories.find((category) => category.name.toLowerCase() === fitnice.category.toLowerCase());
+				const targetmusclecategory = targetmusclecategories.find((targetmusclecategory) => targetmusclecategory.name.toLowerCase() === fitnice.targetmusclecategory.toLowerCase());
 				setFormState({
 					category_id: category.id,
+					targetmusclecategory_id: targetmusclecategory.id,
 					body: fitnice.body
 				})
 			})
 		}
-	},[id, categories]);
+	},[id]);
 
 	function handleChange(event) {
 		setFormState({
@@ -50,7 +54,7 @@ export default function NewFitNice() {
 			.then((fitnice) => {
 		
 				dispatch({type: 'addFitNice', data: fitnice})
-				history.push('/fitnices')
+				history.push('/fitnice')
 			})
 			.catch((error) => console.log(error))
 		}
@@ -61,6 +65,10 @@ export default function NewFitNice() {
 				<Label>Category:</Label>
 				<select name='category_id' value={formState.category_id} onChange={handleChange}>
 					{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}
+				</select>
+				<Label>Target Muscle Category:</Label>
+				<select name='targetmusclecategory_id' value={formState.targetmusclecategory_id} onChange={handleChange}>
+					{targetmusclecategories.map((targetmusclecategory) => <option key={targetmusclecategory.id} value={targetmusclecategory.id}>{targetmusclecategory.name}</option>)}
 				</select>
 				<Label>FitNice:</Label>
 				<BigTextInput type='text' name='body' value={formState.body} onChange={handleChange}></BigTextInput>

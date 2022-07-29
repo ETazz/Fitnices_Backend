@@ -4,6 +4,7 @@ import {FormsContainer,Label, Input, Button} from './Styled/Styled'
 import {signUp} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 
+//setting our form state to empty strings
 
 export default function NewUser() {
 	const initialFormState = {
@@ -21,12 +22,18 @@ export default function NewUser() {
 			[event.target.name]: event.target.value
 		})
 	}
+
+	//handling our registering with a event prop 
+	//signup with our formstate 
+	//then we are setting our user with a token in a storage 
+	//finally allowing our user to go to home page 
+
 	function handleRegister(event) {
 		event.preventDefault()
 		signUp(formState)
-		.then((data, jwt, username) => {
-			sessionStorage.setItem("token", jwt);
-			sessionStorage.setItem("user", username);
+		.then((data) => {
+			sessionStorage.setItem("token", data.jwt);
+			sessionStorage.setItem("user", data.username);
 			dispatch({type: 'setLoggedInUser', data: data.username})
 			history.push('/fitnices')
 		})

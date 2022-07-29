@@ -11,4 +11,4 @@ fitniceAPI.interceptors.request.use((req) => {
     }
     return req;
 })
-export default fitniceAPI
+export default fitniceAPI;

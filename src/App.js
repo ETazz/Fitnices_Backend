@@ -1,7 +1,8 @@
 import React,{ useReducer, useEffect} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {getFitNices} from './services/fitniceServices'
-import { getCategories } from './services/categoryServices'
+import { getCategories} from './services/categoryServices'
+import { getTargetMuscleCategories } from './services/targetmusclecategoryServices'
 import stateReducer from './utils/stateReducer'
 import {StateContext} from './utils/stateContext'
 import FitNices from './components/FitNices'
@@ -11,7 +12,7 @@ import Nav from './components/Nav'
 import SignIn from './components/SignIn'
 import NewFitNice from './components/NewFitNice'
 import NewUser from './components/NewUser'
-import {Header, FitNice, Container} from './components/Styled/Styled'
+import {Header, FitNice} from './components/Styled/Styled'
 import { createGlobalStyle } from 'styled-components'
 
 //global styling for whole page
@@ -23,10 +24,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-
+// may need to make my own category selection for getTargetMuscleCategories
 const App = () => {
 	const initialState = {
 		fitnices: [],
+		targetmusclecategories: [],
 		categories: [],
 		loggedInUser: sessionStorage.getItem("user") || null,
 		auth: {token:sessionStorage.getItem("token") || null}
@@ -39,16 +41,20 @@ const App = () => {
 		getCategories()
 		.then(categories => dispatch({type: 'setCategories', data: categories}))
 		.catch(error => console.log(error))
+		getTargetMuscleCategories()
+		.then(targetmusclecategories => dispatch({type: 'setTargetMuscleCategories', data: targetmusclecategories}))
+		.catch(error => console.log(error))
+		
 	},[])
 
 	return (
 		<div>
 			<GlobalStyle />
 			<StateContext.Provider value={{store,dispatch}}>
+			<Header> FitNices Library </Header>
+				<Router>
+				<Nav/>
 				<FitNice>
-				<Header> FitNices Library </Header>
-					<Router>
-					<Nav/>
 						<Switch>
 							<Route exact path='/fitnices' component={FitNices}/> 
 							<Route exact path='/fitnices/new' component={NewFitNice} />
@@ -57,8 +63,8 @@ const App = () => {
 							<Route path='/sign_in' component={SignIn}></Route>
 							<Route path='/register' component={NewUser}></Route>
 						</Switch>
+					</FitNice>
 				</Router>
-				</FitNice>
 			</StateContext.Provider>
 
 		</div>

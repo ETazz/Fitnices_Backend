@@ -1,6 +1,6 @@
 export default function reducer (state, action) {
 	switch(action.type) {
-		case 'setFitNice':{
+		case 'setFitNices':{
 			return {
 				...state,
 				fitnices: action.data
@@ -50,6 +50,12 @@ export default function reducer (state, action) {
 			return{
 				...state,
 				categories: action.data
+			}
+		}
+		case 'setTargetMuscleCategories': {
+			return{
+				...state,
+				targetmusclecategories: action.data
 			}
 		}
 		default: return state

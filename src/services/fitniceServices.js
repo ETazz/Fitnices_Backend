@@ -11,34 +11,33 @@ import fitniceAPI from "../config/api";
 // 	}
 // }
 
+export async function getFitNice(id) {
+    const response = await fitniceAPI.get(`/api/fitnices/${id}`);
+    console.log(response);
+    return response.data;
+}
+
+
 export async function getFitNices() {
     const response = await fitniceAPI.get('/api/fitnices');
     console.log(response)
     return response.data
 }
 
-// this may be where i am getting id -infinty
-
-
-export async function getFitNice(id) {
-    const response = await fitniceAPI.get(`/api/fitnices/${id}`);
-    console.log(response)
-    return response.data
-}
 export async function createFitNice(fitnice) {
     const response = await fitniceAPI.post('/api/fitnices', fitnice)
-    console.log(response)
+    console.error(response)
     return response.data
 }
 
 export async function deleteFitNice(id) {
-    const response = await fitniceAPI.delete(`/api/fitnices/${id}`);
+    const response = await fitniceAPI.delete(`/api/fitnices/${id}`)
     console.log(response)
     return response.data
 }
 
 export async function updateFitNice(data) {
-    const response = await fitniceAPI.put(`/api/fitnices/${data.id}`,{body: data.body, category_id: data.category_id})
+    const response = await fitniceAPI.put(`/api/fitnices/${data.id}`,{body: data.body, targetmusclecategory_id: data.targetmusclecategory_id, category_id: data.category_id})
     console.log(response)
 	return response.data
 }

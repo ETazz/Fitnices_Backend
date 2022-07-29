@@ -2,9 +2,8 @@ import styled from 'styled-components'
 
 export const Logo = styled.logo
 
-export const FitNice = styled.div `
-	background-color: #5d5d5d;
-`
+
+// styling for the header
 
 export const Header = styled.div `
 	display: flex;
@@ -23,16 +22,16 @@ export const FormsContainer = styled.div `
 	margin-bottom: 10px;
 	flex-direction: column;
 `
-
+// styling for the container that content is in
 
 export const Container = styled.div `
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 10px;
-	background-color: black;
+	background-color: #333333;
 `
-// Styling for buttons 
+// Styling for logged in user and buttons
 export const Span = styled.span`
 	background-color: #fff;
 	border-radius: 5px;
@@ -42,6 +41,23 @@ export const Span = styled.span`
 	font-weight: 700;
 	padding: 10px 10px;
 `
+// styling for box around the fitnices exercises on home page
+
+export const FitNice = styled.div `
+	background-color: #5d5d5d;
+`
+// fitnices body // CHANGE THIS TO CHANGE FITNICES STYLING
+
+export const FitNiceBody = styled.div `
+	background-color: #333333;
+	font-size: 1.5em;
+	padding: .5em;
+	color: white;
+	border: 1px solid white;
+`
+
+
+// styling for the buttons 
 
 export const Button = styled.button`
 	margin: 10px;
@@ -60,7 +76,7 @@ export const Button = styled.button`
 		transform: scale(0.98);
 	}
 `
-
+//styling for input fields 
 export const Input = styled.input `
 	height: 1em;
 	margin: .3em;
@@ -75,13 +91,6 @@ export const BigTextInput = styled(Input) `
 // text for forms
 
 export const Label = styled.span `
-font-family: Arial,sans-serif;
-color: #fff;
+	font-family: Arial,sans-serif;
+	color: #fff;
 `
-// fitnices body
-export const FitNiceBody = styled.div `
-background-color: white;
-font-size: 1.5em;
-padding: .5em;
-`
-
