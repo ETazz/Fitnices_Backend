@@ -58,6 +58,12 @@ export default function reducer (state, action) {
 				targetmusclecategories: action.data
 			}
 		}
+		case 'setExercises': {
+			return{
+				...state,
+				exercises: action.data
+			}
+		}
 		default: return state
 	}
 }

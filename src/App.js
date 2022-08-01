@@ -2,6 +2,7 @@ import React,{ useReducer, useEffect} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {getFitNices} from './services/fitniceServices'
 import { getCategories} from './services/categoryServices'
+import { getExercises} from './services/exerciseServices'
 import { getTargetMuscleCategories } from './services/targetmusclecategoryServices'
 import stateReducer from './utils/stateReducer'
 import {StateContext} from './utils/stateContext'
@@ -29,6 +30,7 @@ const App = () => {
 	const initialState = {
 		fitnices: [],
 		targetmusclecategories: [],
+		exercises: [],
 		categories: [],
 		loggedInUser: sessionStorage.getItem("user") || null,
 		auth: {token:sessionStorage.getItem("token") || null}
@@ -44,7 +46,9 @@ const App = () => {
 		getTargetMuscleCategories()
 		.then(targetmusclecategories => dispatch({type: 'setTargetMuscleCategories', data: targetmusclecategories}))
 		.catch(error => console.log(error))
-		
+		getExercises()
+		.then(exercises => dispatch({type: 'setExercises', data: exercises}))
+		.catch(error => console.log(error))
 	},[])
 
 	return (

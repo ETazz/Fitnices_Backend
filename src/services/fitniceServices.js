@@ -37,7 +37,7 @@ export async function deleteFitNice(id) {
 }
 
 export async function updateFitNice(data) {
-    const response = await fitniceAPI.put(`/api/fitnices/${data.id}`,{body: data.body, targetmusclecategory_id: data.targetmusclecategory_id, category_id: data.category_id})
+    const response = await fitniceAPI.put(`/api/fitnices/${data.id}`,{body: data.body, targetmusclecategory_id: data.targetmusclecategory_id, category_id: data.category_id,  exercise_id: data.exercise_id})
     console.log(response)
 	return response.data
 }

@@ -34,6 +34,8 @@ export default function FitNiceDetails() {
 			</p>			
 			<p>Category: {fitnice.category}</p>
 			<p>Target Muscle Category: {fitnice.targetmusclecategory}</p>
+			<p>Exercise: {fitnice.exercise}</p>
+			<p>Description: {fitnice.body}</p>
 			{loggedInUser === fitnice.author &&
 				<Container>
 					<Button onClick={() => history.push(`/fitnices/update/${id}`)}>Update</Button>

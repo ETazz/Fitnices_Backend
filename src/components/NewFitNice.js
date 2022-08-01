@@ -8,6 +8,7 @@ import {useGlobalState} from '../utils/stateContext'
 export default function NewFitNice() {
 	const initialFormState = {
 		category_id: 1,
+		exercise_id: 1,
 		targetmusclecategory_id: 1,
 		body: ''
 	}
@@ -15,7 +16,7 @@ export default function NewFitNice() {
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch, store} = useGlobalState()
-	const {categories, targetmusclecategories} = store;
+	const {categories, targetmusclecategories, exercises} = store;
 
 	useEffect(() => {
 		if(id) {
@@ -23,9 +24,11 @@ export default function NewFitNice() {
 			.then((fitnice) => {
 				console.log(fitnice)
 				const category = categories.find((category) => category.name.toLowerCase() === fitnice.category.toLowerCase());
+				const exercise = exercises.find((exercise) => exercise.name.toLowerCase() === fitnice.exercise.toLowerCase());
 				const targetmusclecategory = targetmusclecategories.find((targetmusclecategory) => targetmusclecategory.name.toLowerCase() === fitnice.targetmusclecategory.toLowerCase());
 				setFormState({
 					category_id: category.id,
+					exercise_id: exercise.id,
 					targetmusclecategory_id: targetmusclecategory.id,
 					body: fitnice.body
 				})
@@ -69,6 +72,10 @@ export default function NewFitNice() {
 				<Label>Target Muscle Category:</Label>
 				<select name='targetmusclecategory_id' value={formState.targetmusclecategory_id} onChange={handleChange}>
 					{targetmusclecategories.map((targetmusclecategory) => <option key={targetmusclecategory.id} value={targetmusclecategory.id}>{targetmusclecategory.name}</option>)}
+				</select>
+				<Label> Exercise:</Label>
+				<select name='exercise_id' value={formState.exercise_id} onChange={handleChange}>
+					{exercises.map((exercise) => <option key={exercise.id} value={exercise.id}>{exercise.name}</option>)}
 				</select>
 				<Label>FitNice:</Label>
 				<BigTextInput type='text' name='body' value={formState.body} onChange={handleChange}></BigTextInput>
