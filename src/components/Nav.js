@@ -38,7 +38,7 @@ export default function Nav() {
 		// <ThemeProvider theme = {theme}>
 		
 			<Container>
-			<Button onClick={() => history.push('/fitnices')}>Home</Button>
+			<Button onClick={() => history.push('/fitnices')}>Current FitNices</Button>
 			{loggedInUser ?
 				<>
 				

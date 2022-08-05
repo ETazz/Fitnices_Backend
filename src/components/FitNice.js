@@ -4,9 +4,7 @@ import {FitNiceBody} from './Styled/Styled'
 export default function FitNice({fitnice}) {
     return (
         <>
-            <FitNiceBody>
-                {fitnice.body.toUpperCase()}
-            </FitNiceBody>   
+            <FitNiceBody>{fitnice.body.toUpperCase()}</FitNiceBody>   
         </>
     )
 }

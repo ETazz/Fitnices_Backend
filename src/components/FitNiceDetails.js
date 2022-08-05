@@ -2,7 +2,7 @@ import React,{  useState,useEffect} from 'react'
 import {useParams,useHistory} from 'react-router-dom'
 import Moment from 'react-moment'
 import { getFitNice } from "../services/fitniceServices"
-import {Button, Container} from './Styled/Styled'
+import {Button, FitNiceBody} from './Styled/Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteFitNice} from '../services/fitniceServices'
 
@@ -28,21 +28,23 @@ export default function FitNiceDetails() {
 	}
 	return (
 		<div>
+			<FitNiceBody>
 			<p>Written by: {fitnice.author}</p>			
 			<p>Posted on: 
-				<Moment format='D MMM YYYY'>{fitnice.posted}</Moment>
+				<Moment format=' D MMM YYYY '>{fitnice.posted}</Moment>
 			</p>			
 			<p>Category: {fitnice.category}</p>
 			<p>Target Muscle Category: {fitnice.targetmusclecategory}</p>
 			<p>Exercise: {fitnice.exercise}</p>
-			<p>Description: {fitnice.body}</p>
+			<p>Notes: {fitnice.body}</p>
 			{loggedInUser === fitnice.author &&
-				<Container>
+				<>
 					<Button onClick={() => history.push(`/fitnices/update/${id}`)}>Update</Button>
 					<Button onClick={handleDelete}>Delete</Button>
 					<Button onClick={() => history.push('/fitnices') }>Save & Exit</Button>	
-				</Container>
+				</>
 			}
+			</FitNiceBody>
 		</div>
 	)
 }

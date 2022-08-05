@@ -3,6 +3,17 @@ import styled from 'styled-components'
 export const Logo = styled.logo
 
 
+
+export const ContainerWrapper = styled.div `
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	background-color: grey;
+	border: 2px solid #333333;
+	max-width: 700px;
+	margin: auto;
+`
+
 // styling for the header
 
 export const Header = styled.div `
@@ -11,18 +22,21 @@ export const Header = styled.div `
 	justify-content: center;
 	padding: 10px;
 	color: #fff;
-	background-color: grey;
+	border: 2px solid #333333;
+	width: 50%;
+	margin: auto;
 `
-// Container is around the navbar, change this to change navbar
+// forms container for registering and sign in
 
 export const FormsContainer = styled.div `
 	display: flex;
 	align-items: center;
 	justify-content: flex;
-	margin-bottom: 10px;
 	flex-direction: column;
+	padding: auto;
+	padding: 10px 10px;
 `
-// styling for the container that content is in
+// styling for the container that the nav is in
 
 export const Container = styled.div `
 	display: flex;
@@ -30,8 +44,10 @@ export const Container = styled.div `
 	justify-content: center;
 	margin-bottom: 10px;
 	background-color: #333333;
+	border: 1px solid white;
 `
 // Styling for logged in user and buttons
+
 export const Span = styled.span`
 	background-color: #fff;
 	border-radius: 5px;
@@ -44,16 +60,22 @@ export const Span = styled.span`
 // styling for box around the fitnices exercises on home page
 
 export const FitNice = styled.div `
-	background-color: #5d5d5d;
+	background-color: #333333;
+	border: 1px solid white;
 `
 // fitnices body // CHANGE THIS TO CHANGE FITNICES STYLING
 
 export const FitNiceBody = styled.div `
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex;
+	flex-direction: column;
+	padding: 10px 10px;
 	background-color: #333333;
-	font-size: 1.5em;
-	padding: .5em;
-	color: white;
 	border: 1px solid white;
+	color: #fff;
+	font-size: 1.5em;
 `
 
 

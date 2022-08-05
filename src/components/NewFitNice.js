@@ -4,6 +4,9 @@ import {Label, BigTextInput, Button, FormsContainer} from './Styled/Styled'
 import {createFitNice, updateFitNice} from '../services/fitniceServices'
 import { getFitNice } from "../services/fitniceServices"
 import {useGlobalState} from '../utils/stateContext'
+// import Multiselect from 'multiselect-react-dropdown'
+
+// import Multiselect from 'multiselect-react-dropdown';
 
 export default function NewFitNice() {
 	const initialFormState = {
@@ -57,11 +60,12 @@ export default function NewFitNice() {
 			.then((fitnice) => {
 		
 				dispatch({type: 'addFitNice', data: fitnice})
-				history.push('/fitnice')
+				history.push('/fitnices')
 			})
 			.catch((error) => console.log(error))
 		}
 	}
+
 	return (
 		<>
 			<FormsContainer>

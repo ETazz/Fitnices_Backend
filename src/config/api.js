@@ -1,6 +1,6 @@
 import axios from 'axios';
 const fitniceAPI = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://fitnice.herokuapp.com/'
 })
 
 fitniceAPI.interceptors.request.use((req) => {
