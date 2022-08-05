@@ -22,8 +22,8 @@ export default function reducer (state, action) {
 			}
 		}
 		case 'updateFitNice': {
-			const fitnice = state.fitnices.find((fitnice) => fitnice.id == action.data.id)
-			const theRest = state.fitnices.filter((fitnice) => fitnice.id != action.data.id)
+			const fitnice = state.fitnices.find((fitnice) => fitnice.id === action.data.id)
+			const theRest = state.fitnices.filter((fitnice) => fitnice.id !== action.data.id)
 			const updatedFitNice = Object.assign(fitnice, action.data)
 			return {
 				...state,

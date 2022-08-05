@@ -37,7 +37,7 @@ export default function NewFitNice() {
 				})
 			})
 		}
-	},[id]);
+	},[categories, exercises, id, targetmusclecategories]);
 
 	function handleChange(event) {
 		setFormState({

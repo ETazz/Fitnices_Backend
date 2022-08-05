@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import FitNice from './FitNice'
 import {useGlobalState} from '../utils/stateContext'
-import SearchBar from './Search';
 
 const StyledLink = styled(Link) `
 	text-decoration: none;
