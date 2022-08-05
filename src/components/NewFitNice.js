@@ -78,7 +78,7 @@ export default function NewFitNice() {
 					{targetmusclecategories.map((targetmusclecategory) => <option key={targetmusclecategory.id} value={targetmusclecategory.id}>{targetmusclecategory.name}</option>)}
 				</select>
 				<Label> Exercise:</Label>
-				<select name='exercise_id' value={formState.exercise_id} onChange={handleChange}>
+				<select name='excercise_id' value={formState.excercise_id} onChange={handleChange}>
 					{exercises.map((exercise) => <option key={exercise.id} value={exercise.id}>{exercise.name}</option>)}
 				</select>
 				<Label>FitNice:</Label>

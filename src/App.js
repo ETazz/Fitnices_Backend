@@ -16,6 +16,7 @@ import NewUser from './components/NewUser'
 import {Header, FitNice, ContainerWrapper} from './components/Styled/Styled'
 import { createGlobalStyle } from 'styled-components'
 
+
 //global styling for whole page
 
 const GlobalStyle = createGlobalStyle`
@@ -26,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 // may need to make my own category selection for getTargetMuscleCategories
+
+
 const App = () => {
 	const initialState = {
 		fitnices: [],
