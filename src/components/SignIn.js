@@ -4,6 +4,8 @@ import {signIn} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 import {FormsContainer} from './Styled/Styled'
 
+
+//setting out deafult intial form state to be empty
 export default function SignIn({history}) {
 	const initialFormState = {
 		email: '',

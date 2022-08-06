@@ -9,6 +9,7 @@ import {useGlobalState} from '../utils/stateContext'
 // import Multiselect from 'multiselect-react-dropdown';
 
 export default function NewFitNice() {
+	//setting the intial form state
 	const initialFormState = {
 		category_id: 1,
 		exercise_id: 1,
@@ -23,13 +24,18 @@ export default function NewFitNice() {
 
 	useEffect(() => {
 		if(id) {
+			//recieving the fitnice id
 			getFitNice(id)
+			//return the fitnice in a string instead of a id
 			.then((fitnice) => {
+				//console logging the fitnice once we have recieved the fitnice by id
 				console.log(fitnice)
+				//receving the fitnice and turning it into lower case
 				const category = categories.find((category) => category.name.toLowerCase() === fitnice.category.toLowerCase());
 				const exercise = exercises.find((exercise) => exercise.name.toLowerCase() === fitnice.exercise.toLowerCase());
 				const targetmusclecategory = targetmusclecategories.find((targetmusclecategory) => targetmusclecategory.name.toLowerCase() === fitnice.targetmusclecategory.toLowerCase());
 				setFormState({
+					//setting form state to the id params
 					category_id: category.id,
 					exercise_id: exercise.id,
 					targetmusclecategory_id: targetmusclecategory.id,

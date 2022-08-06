@@ -4,8 +4,7 @@ import {FormsContainer,Label, Input, Button} from './Styled/Styled'
 import {signUp} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 
-//setting our form state to empty strings
-
+//setting out deafault intial form state to be empty
 export default function NewUser() {
 	const initialFormState = {
 		username: '', 
@@ -34,7 +33,9 @@ export default function NewUser() {
 		.then((data) => {
 			sessionStorage.setItem("token", data.jwt);
 			sessionStorage.setItem("user", data.username);
-			dispatch({type: 'setLoggedInUser', data: data.username})
+		dispatch({
+			type: 'setLoggedInUser', 
+			data: data.username})
 			history.push('/fitnices')
 		})
 	}

@@ -25,21 +25,21 @@ const GlobalStyle = createGlobalStyle`
     background: #D3D3D3;
   }
 `
-
-// may need to make my own category selection for getTargetMuscleCategories
-
-
+// setting categores, exercises, targetmusclecategories and fitnices to an array
 const App = () => {
 	const initialState = {
 		fitnices: [],
 		targetmusclecategories: [],
 		exercises: [],
 		categories: [],
+		// autherisation and logged in user is being set to session storage
+		// if no user. then no session storage which results in null 
 		loggedInUser: sessionStorage.getItem("user") || null,
 		auth: {token:sessionStorage.getItem("token") || null}
 	}
 	const [store, dispatch] = useReducer(stateReducer,initialState)
 	useEffect(() => {
+		//returning the data for the currect function. if incorrect data then returns error.
 		getFitNices()
 		.then((fitnices) => dispatch({type: 'setFitNices', data: fitnices}))
 		.catch((error) => console.log(error))

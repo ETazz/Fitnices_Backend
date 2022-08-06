@@ -10,33 +10,25 @@ import {signOut} from '../services/authServices'
 // nav is displayed as <Nav />
 
 export default function Nav() {
+	// use history for navigation
 	let history = useHistory()
-
+	//setting store and dispatch for global state
 	const {store,dispatch} = useGlobalState()
-	const {loggedInUser} = store
+	const {loggedInUser} = store 
 
-	// function fetchRandomFitNice(event) {
-	// 	event.preventDefault()
-	// 	getRandomFitNice()
-	// 	.then((fitnice) => {
-	// 		setRandomFitNice(fitnice)
-	// 		history.push('/random')
-	// 	})
-	// 	.catch((error) => console.log(error))
-	// }
-
+	//function for handling sing out 
 	function handleSignOut(event) {
 		event.preventDefault()
+		//signing out the current logged in user
 		signOut(loggedInUser)
 		.then(() => {
+			//setting data to null once the user is signed out 
 			dispatch({type: 'setLoggedInUser', data: null})
 			dispatch({type: 'setToken', data: null})
 		})
 	}
 
 	return (
-		// <ThemeProvider theme = {theme}>
-		
 			<Container>
 			<Button onClick={() => history.push('/fitnices')}>Current FitNices</Button>
 			{loggedInUser ?

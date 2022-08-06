@@ -1,7 +1,10 @@
 import axios from 'axios';
+
+//importing baseURL to local storage 
 const fitniceAPI = axios.create({
     baseURL: 'https://fitnice.herokuapp.com/'
 })
+
 
 fitniceAPI.interceptors.request.use((req) => {
     const token = sessionStorage.getItem('token');

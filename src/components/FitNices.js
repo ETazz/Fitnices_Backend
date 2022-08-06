@@ -7,11 +7,14 @@ import {useGlobalState} from '../utils/stateContext'
 const StyledLink = styled(Link) `
 	text-decoration: none;
 `
+
+//export function fitnices
+
 export default function FitNices() {
 	const {store} = useGlobalState()
 	const {fitnices} = store
 	if(!fitnices) return null
-
+// maps over all the fitnices and displays them on the current fitnice page
 	return  (
 		<div>
 			{fitnices.map((fitnice,index) => {
